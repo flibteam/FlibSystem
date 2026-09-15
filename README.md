@@ -57,7 +57,7 @@ msbuild src\FlibSystem.csproj /t:Rebuild /p:Configuration=Release /p:Platform=An
 
 - GitHub: [github.com/flibteam](https://github.com/flibteam)
 - Поддержать проект: [donationalerts.com/r/jannirobot](https://www.donationalerts.com/r/jannirobot)
-- Telegram: .Telegram. (https://t.me/flibteam)
+- Telegram: https://t.me/flibteam
 
 ## Предупреждение
 
