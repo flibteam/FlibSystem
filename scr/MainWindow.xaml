@@ -1,0 +1,148 @@
+﻿<Window x:Class="FlibSystem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework"
+        Title="FlibSystem" Height="760" Width="1200"
+        MinHeight="620" MinWidth="1000"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="CanResize"
+        Background="{StaticResource BgBrush}"
+        Foreground="{StaticResource PrimaryTextBrush}"
+        FontFamily="Segoe UI" FontSize="13"
+        UseLayoutRounding="True"
+        TextOptions.TextFormattingMode="Display"
+        StateChanged="Window_StateChanged"
+        SourceInitialized="Window_SourceInitialized">
+
+    <shell:WindowChrome.WindowChrome>
+        <shell:WindowChrome CaptionHeight="0" GlassFrameThickness="0"
+                            ResizeBorderThickness="6" CornerRadius="0"
+                            UseAeroCaptionButtons="False" />
+    </shell:WindowChrome.WindowChrome>
+
+    <Border x:Name="RootBorder" Background="{StaticResource BgBrush}"
+            BorderBrush="{StaticResource HeaderBorderBrush}" BorderThickness="1"
+            CornerRadius="10" ClipToBounds="True">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="44" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- ======== Панель заголовка (macOS) ======== -->
+            <Border Grid.Row="0" Background="{StaticResource SidebarBrush}"
+                    BorderBrush="{StaticResource HeaderBorderBrush}" BorderThickness="0,0,0,1"
+                    MouseLeftButtonDown="TitleBar_MouseLeftButtonDown"
+                    MouseLeftButtonUp="TitleBar_MouseLeftButtonUp">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="16,0,0,0" VerticalAlignment="Center">
+                        <Button Style="{StaticResource TrafficLightButtonStyle}" Content="&#xE8BB;"
+                                Tag="close" Background="{StaticResource CloseBrush}"
+                                ToolTip="Закрыть" Click="TrafficLight_Click" Margin="0,0,8,0" />
+                        <Button Style="{StaticResource TrafficLightButtonStyle}" Content="&#xE921;"
+                                Tag="min" Background="{StaticResource MinimizeBrush}"
+                                ToolTip="Свернуть" Click="TrafficLight_Click" Margin="0,0,8,0" />
+                        <Button x:Name="MaxBtn" Style="{StaticResource TrafficLightButtonStyle}" Content="&#xE922;"
+                                Tag="max" Background="{StaticResource MaximizeBrush}"
+                                ToolTip="Развернуть" Click="TrafficLight_Click" />
+                    </StackPanel>
+
+                    <TextBlock Grid.Column="1" Text="FlibSystem" FontSize="13" FontWeight="SemiBold"
+                               Foreground="{StaticResource PrimaryTextBrush}"
+                               HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+                    <TextBlock Grid.Column="2" Text="&#xE7F4;" FontFamily="Segoe MDL2 Assets" FontSize="13"
+                               Foreground="{StaticResource SecondaryTextBrush}"
+                               Margin="0,0,16,0" VerticalAlignment="Center" />
+                </Grid>
+            </Border>
+
+            <!-- ======== Основная часть ======== -->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="232" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Боковая панель -->
+                <Border Grid.Column="0" Background="{StaticResource SidebarBrush}"
+                        BorderBrush="{StaticResource HeaderBorderBrush}" BorderThickness="0,0,1,0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0" Margin="24,18,24,14">
+                            <TextBlock Text="Настройка Windows" FontSize="13" FontWeight="SemiBold"
+                                       Foreground="{StaticResource PrimaryTextBrush}" />
+                            <TextBlock Text="Настройки и оптимизация" FontSize="11.5"
+                                       Foreground="{StaticResource SecondaryTextBrush}" Margin="0,2,0,0" />
+                        </StackPanel>
+
+                        <ListBox x:Name="NavList" Grid.Row="1" Margin="8,0"
+                                 Style="{StaticResource NavListStyle}"
+                                 ItemContainerStyle="{StaticResource NavItemStyle}"
+                                 SelectionChanged="NavList_SelectionChanged">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Glyph}" FontFamily="Segoe MDL2 Assets"
+                                                   FontSize="14" Margin="0,0,12,0" VerticalAlignment="Center" />
+                                        <TextBlock Text="{Binding Title}" FontSize="13" VerticalAlignment="Center" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+                        <Border Grid.Row="2" Margin="16,12,16,16" CornerRadius="9" Background="#14FFFFFF"
+                                BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Padding="12">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Ellipse Width="8" Height="8" Fill="{StaticResource SuccessBrush}"
+                                             VerticalAlignment="Center" Margin="0,0,8,0" />
+                                    <TextBlock Text="Права администратора" FontSize="11.5"
+                                               Foreground="{StaticResource SecondaryTextBrush}" />
+                                </StackPanel>
+                                <TextBlock Text="Изменения применяются мгновенно" FontSize="11"
+                                           Foreground="{StaticResource SecondaryTextBrush}" Margin="0,4,0,0" />
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <!-- Контент -->
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" Margin="30,20,30,6">
+                        <TextBlock x:Name="PageTitle" FontSize="27" FontWeight="SemiBold"
+                                   Foreground="{StaticResource PrimaryTextBrush}" VerticalAlignment="Center" />
+                        <Button HorizontalAlignment="Right" Content="Резервная копия"
+                                Style="{StaticResource SecondaryButtonStyle}"
+                                Click="BackupButton_Click" />
+                    </Grid>
+
+                    <ScrollViewer x:Name="ContentScroll" Grid.Row="1"
+                                  VerticalScrollBarVisibility="Auto"
+                                  HorizontalScrollBarVisibility="Disabled"
+                                  Padding="30,10,30,26">
+                        <ContentControl x:Name="ContentHost" Focusable="False" />
+                    </ScrollViewer>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

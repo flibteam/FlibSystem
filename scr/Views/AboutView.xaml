@@ -1,0 +1,36 @@
+<UserControl x:Class="FlibSystem.Views.AboutView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel>
+        <Border Style="{StaticResource Card}">
+            <StackPanel>
+                <TextBlock Text="FlibSystem" FontSize="20" FontWeight="SemiBold"
+                           Foreground="{StaticResource PrimaryTextBrush}" />
+                <TextBlock Text="Утилита для тонкой настройки и персонализации Windows"
+                           TextWrapping="Wrap" Margin="0,6,0,0" Style="{StaticResource HintText}" />
+                <TextBlock Text="Версия 1.0.0 • .NET Framework 4.7.2 • WPF"
+                           Margin="0,10,0,0" Style="{StaticResource HintText}" />
+            </StackPanel>
+        </Border>
+
+        <TextBlock Text="Автор" Style="{StaticResource SectionTitle}" Margin="0,20,0,10" />
+        <Border Style="{StaticResource Card}">
+            <StackPanel>
+                <TextBlock Text="flibteam (FlibSystem)" FontSize="14" FontWeight="SemiBold"
+                           Foreground="{StaticResource PrimaryTextBrush}" />
+            </StackPanel>
+        </Border>
+
+        <TextBlock Text="Ссылки" Style="{StaticResource SectionTitle}" Margin="0,20,0,10" />
+        <Border Style="{StaticResource Card}">
+            <WrapPanel>
+                <Button Content="GitHub" Style="{StaticResource AccentButtonStyle}"
+                        Margin="0,0,10,10" Click="GitHub_Click"
+                        ToolTip="https://github.com/flibteam" />
+                <Button Content="Поддержать проект" Style="{StaticResource SecondaryButtonStyle}"
+                        Margin="0,0,10,10" Click="Donate_Click"
+                        ToolTip="https://www.donationalerts.com/r/jannirobot" />
+            </WrapPanel>
+        </Border>
+    </StackPanel>
+</UserControl>

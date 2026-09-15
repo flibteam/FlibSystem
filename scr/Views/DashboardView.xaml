@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="FlibSystem.Views.DashboardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel>
+        <Border Style="{StaticResource Card}">
+            <StackPanel>
+                <TextBlock Text="Добро пожаловать в FlibSystem" FontSize="18" FontWeight="SemiBold"
+                           Foreground="{StaticResource PrimaryTextBrush}" />
+                <TextBlock Text="Утилита для тонкой настройки и персонализации Windows. Все твики применяются мгновенно. Перед внесением изменений рекомендуется создать резервную копию реестра." 
+                           TextWrapping="Wrap" Margin="0,6,0,0" Style="{StaticResource HintText}" />
+            </StackPanel>
+        </Border>
+
+        <TextBlock Text="Ваша система" Style="{StaticResource SectionTitle}" Margin="0,20,0,10" />
+        <WrapPanel x:Name="InfoCards" />
+
+        <TextBlock Text="Быстрые действия" Style="{StaticResource SectionTitle}" Margin="0,20,0,10" />
+        <Border Style="{StaticResource Card}">
+            <WrapPanel>
+                <Button Content="Создать резервную копию" Style="{StaticResource AccentButtonStyle}"
+                        Margin="0,0,10,10" Click="Backup_Click" />
+                <Button Content="Очистить временные файлы" Style="{StaticResource SecondaryButtonStyle}"
+                        Margin="0,0,10,10" Click="CleanTemp_Click" />
+                <Button Content="Перезапустить Проводник" Style="{StaticResource SecondaryButtonStyle}"
+                        Margin="0,0,10,10" Click="RestartExplorer_Click" />
+                <Button Content="Открыть папку бэкапов" Style="{StaticResource SecondaryButtonStyle}"
+                        Margin="0,0,10,10" Click="OpenBackupFolder_Click" />
+            </WrapPanel>
+        </Border>
+
+        <TextBlock Text="Советы" Style="{StaticResource SectionTitle}" Margin="0,20,0,10" />
+        <Border Style="{StaticResource Card}">
+            <StackPanel>
+                <TextBlock Text="&#xE9D2;  Твики с жёлтым предупреждением могут требовать перезагрузки." Style="{StaticResource HintText}" Margin="0,0,0,6" />
+                <TextBlock Text="&#xE9D2;  После изменения твиков проводника перезапустите Проводник для применения." Style="{StaticResource HintText}" Margin="0,0,0,6" />
+                <TextBlock Text="&#xE9D2;  Для восстановления настроек используйте раздел «Резервные копии»." Style="{StaticResource HintText}" />
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</UserControl>
+
