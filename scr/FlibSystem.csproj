@@ -44,7 +44,8 @@
 <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
-    <Reference Include="System.ServiceProcess" />
+<Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xaml" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
@@ -109,7 +110,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Themes\Styles.xaml">
+<Page Include="Themes\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Brushes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\BrushesDark.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -168,7 +177,8 @@
     <Compile Include="Models\SystemInfo.cs" />
     <Compile Include="Models\NavPage.cs" />
     <Compile Include="Models\BackupEntry.cs" />
-    <Compile Include="Models\StartupItem.cs" />
+<Compile Include="Models\StartupItem.cs" />
+    <Compile Include="Models\ReleaseInfo.cs" />
     <Compile Include="Services\RegistryHelper.cs" />
     <Compile Include="Services\ServiceHelper.cs" />
     <Compile Include="Services\ProcessHelper.cs" />
@@ -181,7 +191,8 @@
     <Compile Include="Services\CleanupService.cs" />
     <Compile Include="Services\UwpService.cs" />
     <Compile Include="Services\TweakCatalog.cs" />
-    <Compile Include="Services\StartupService.cs" />
+<Compile Include="Services\StartupService.cs" />
+    <Compile Include="Services\UpdateService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

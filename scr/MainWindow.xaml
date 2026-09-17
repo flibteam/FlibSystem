@@ -7,8 +7,8 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         ResizeMode="CanResize"
-        Background="{StaticResource BgBrush}"
-        Foreground="{StaticResource PrimaryTextBrush}"
+        Background="{DynamicResource BgBrush}"
+        Foreground="{DynamicResource PrimaryTextBrush}"
         FontFamily="Segoe UI" FontSize="13"
         UseLayoutRounding="True"
         TextOptions.TextFormattingMode="Display"
@@ -21,8 +21,8 @@
                             UseAeroCaptionButtons="False" />
     </shell:WindowChrome.WindowChrome>
 
-    <Border x:Name="RootBorder" Background="{StaticResource BgBrush}"
-            BorderBrush="{StaticResource HeaderBorderBrush}" BorderThickness="1"
+    <Border x:Name="RootBorder" Background="{DynamicResource BgBrush}"
+            BorderBrush="{DynamicResource HeaderBorderBrush}" BorderThickness="1"
             CornerRadius="10" ClipToBounds="True">
 
         <Grid>
@@ -32,8 +32,8 @@
             </Grid.RowDefinitions>
 
             <!-- ======== Панель заголовка (macOS) ======== -->
-            <Border Grid.Row="0" Background="{StaticResource SidebarBrush}"
-                    BorderBrush="{StaticResource HeaderBorderBrush}" BorderThickness="0,0,0,1"
+            <Border Grid.Row="0" Background="{DynamicResource SidebarBrush}"
+                    BorderBrush="{DynamicResource HeaderBorderBrush}" BorderThickness="0,0,0,1"
                     MouseLeftButtonDown="TitleBar_MouseLeftButtonDown"
                     MouseLeftButtonUp="TitleBar_MouseLeftButtonUp">
                 <Grid>
@@ -45,22 +45,22 @@
 
                     <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="16,0,0,0" VerticalAlignment="Center">
                         <Button Style="{StaticResource TrafficLightButtonStyle}" Content="&#xE8BB;"
-                                Tag="close" Background="{StaticResource CloseBrush}"
+                                Tag="close" Background="{DynamicResource CloseBrush}"
                                 ToolTip="Закрыть" Click="TrafficLight_Click" Margin="0,0,8,0" />
                         <Button Style="{StaticResource TrafficLightButtonStyle}" Content="&#xE921;"
-                                Tag="min" Background="{StaticResource MinimizeBrush}"
+                                Tag="min" Background="{DynamicResource MinimizeBrush}"
                                 ToolTip="Свернуть" Click="TrafficLight_Click" Margin="0,0,8,0" />
                         <Button x:Name="MaxBtn" Style="{StaticResource TrafficLightButtonStyle}" Content="&#xE922;"
-                                Tag="max" Background="{StaticResource MaximizeBrush}"
+                                Tag="max" Background="{DynamicResource MaximizeBrush}"
                                 ToolTip="Развернуть" Click="TrafficLight_Click" />
                     </StackPanel>
 
                     <TextBlock Grid.Column="1" Text="FlibSystem" FontSize="13" FontWeight="SemiBold"
-                               Foreground="{StaticResource PrimaryTextBrush}"
+                               Foreground="{DynamicResource PrimaryTextBrush}"
                                HorizontalAlignment="Center" VerticalAlignment="Center" />
 
                     <TextBlock Grid.Column="2" Text="&#xE7F4;" FontFamily="Segoe MDL2 Assets" FontSize="13"
-                               Foreground="{StaticResource SecondaryTextBrush}"
+                               Foreground="{DynamicResource SecondaryTextBrush}"
                                Margin="0,0,16,0" VerticalAlignment="Center" />
                 </Grid>
             </Border>
@@ -73,8 +73,8 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Боковая панель -->
-                <Border Grid.Column="0" Background="{StaticResource SidebarBrush}"
-                        BorderBrush="{StaticResource HeaderBorderBrush}" BorderThickness="0,0,1,0">
+                <Border Grid.Column="0" Background="{DynamicResource SidebarBrush}"
+                        BorderBrush="{DynamicResource HeaderBorderBrush}" BorderThickness="0,0,1,0">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
@@ -84,9 +84,9 @@
 
                         <StackPanel Grid.Row="0" Margin="24,18,24,14">
                             <TextBlock Text="Настройка Windows" FontSize="13" FontWeight="SemiBold"
-                                       Foreground="{StaticResource PrimaryTextBrush}" />
+                                       Foreground="{DynamicResource PrimaryTextBrush}" />
                             <TextBlock Text="Настройки и оптимизация" FontSize="11.5"
-                                       Foreground="{StaticResource SecondaryTextBrush}" Margin="0,2,0,0" />
+                                       Foreground="{DynamicResource SecondaryTextBrush}" Margin="0,2,0,0" />
                         </StackPanel>
 
                         <ListBox x:Name="NavList" Grid.Row="1" Margin="8,0"
@@ -104,17 +104,17 @@
                             </ListBox.ItemTemplate>
                         </ListBox>
 
-                        <Border Grid.Row="2" Margin="16,12,16,16" CornerRadius="9" Background="#14FFFFFF"
-                                BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Padding="12">
+                        <Border Grid.Row="2" Margin="16,12,16,16" CornerRadius="9" Background="{DynamicResource SidebarFooterBrush}"
+                                BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Padding="12">
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Ellipse Width="8" Height="8" Fill="{StaticResource SuccessBrush}"
+                                    <Ellipse Width="8" Height="8" Fill="{DynamicResource SuccessBrush}"
                                              VerticalAlignment="Center" Margin="0,0,8,0" />
                                     <TextBlock Text="Права администратора" FontSize="11.5"
-                                               Foreground="{StaticResource SecondaryTextBrush}" />
+                                               Foreground="{DynamicResource SecondaryTextBrush}" />
                                 </StackPanel>
                                 <TextBlock Text="Изменения применяются мгновенно" FontSize="11"
-                                           Foreground="{StaticResource SecondaryTextBrush}" Margin="0,4,0,0" />
+                                           Foreground="{DynamicResource SecondaryTextBrush}" Margin="0,4,0,0" />
                             </StackPanel>
                         </Border>
                     </Grid>
@@ -129,7 +129,7 @@
 
                     <Grid Grid.Row="0" Margin="30,20,30,6">
                         <TextBlock x:Name="PageTitle" FontSize="27" FontWeight="SemiBold"
-                                   Foreground="{StaticResource PrimaryTextBrush}" VerticalAlignment="Center" />
+                                   Foreground="{DynamicResource PrimaryTextBrush}" VerticalAlignment="Center" />
                         <Button HorizontalAlignment="Right" Content="Резервная копия"
                                 Style="{StaticResource SecondaryButtonStyle}"
                                 Click="BackupButton_Click" />

@@ -36,6 +36,78 @@ namespace FlibSystem
             };
 
             NavList.SelectedIndex = 0;
+            Loaded += async (s, e) => await CheckForUpdatesAsync();
+        }
+
+        private static async System.Threading.Tasks.Task CheckForUpdatesAsync()
+        {
+            try
+            {
+                var release = await UpdateService.GetLatestReleaseAsync();
+                if (release == null) return;
+
+                string skipped = UpdateService.GetSkippedVersion();
+                if (string.Equals(skipped, release.TagName, StringComparison.OrdinalIgnoreCase)) return;
+
+                if (!UpdateService.IsNewerAvailable(release)) return;
+
+                var result = MessageBox.Show(
+                    "Доступна новая версия " + release.VersionText +
+                    ".\n\nСкачать обновление сейчас?",
+                    "Доступно обновление FlibSystem",
+                    MessageBoxButton.YesNoCancel,
+                    MessageBoxImage.Information);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    string target = UpdateService.GetDownloadsPath(release);
+                    string downloaded = null;
+                    bool failed = false;
+
+                    await System.Threading.Tasks.Task.Run(() =>
+                    {
+                        var done = new System.Threading.ManualResetEvent(false);
+                        UpdateService.DownloadRelease(release, target,
+                            null,
+                            path => { downloaded = path; failed = string.IsNullOrEmpty(path); done.Set(); });
+                        done.WaitOne();
+                    });
+
+                    if (!failed)
+                    {
+                        string hashError = await System.Threading.Tasks.Task.Run(() =>
+                            UpdateService.VerifyDownload(target, release));
+
+                        if (hashError != null)
+                        {
+                            MessageBox.Show(
+                                "Обновление не установлено:\n" + hashError,
+                                "Обновление", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                        else
+                        {
+                            var openResult = MessageBox.Show(
+                                "Обновление скачано и проверено по контрольной сумме:\n" +
+                                target + "\n\nОткрыть папку загрузок?",
+                                "Обновление", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                            if (openResult == MessageBoxResult.Yes) UpdateService.OpenDownloadsFolder();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(
+                            "Не удалось скачать обновление. Попробуйте позже или вручную на GitHub.",
+                            "Обновление", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                }
+                else if (result == MessageBoxResult.No || result == MessageBoxResult.Cancel)
+                {
+                    UpdateService.SetSkippedVersion(release.TagName);
+                }
+            }
+            catch
+            {
+            }
         }
 
         private void NavList_SelectionChanged(object sender, SelectionChangedEventArgs e)

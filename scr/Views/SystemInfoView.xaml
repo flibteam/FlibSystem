@@ -16,10 +16,10 @@
                         <StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                                 <TextBlock Text="{Binding Glyph}" FontFamily="Segoe MDL2 Assets"
-                                           FontSize="15" Foreground="{StaticResource AccentBrush}"
+                                           FontSize="15" Foreground="{DynamicResource AccentBrush}"
                                            Margin="0,0,8,0" VerticalAlignment="Center" />
                                 <TextBlock Text="{Binding Title}" FontWeight="SemiBold"
-                                           Foreground="{StaticResource PrimaryTextBrush}" FontSize="15" />
+                                           Foreground="{DynamicResource PrimaryTextBrush}" FontSize="15" />
                             </StackPanel>
                             <ItemsControl ItemsSource="{Binding Items}">
                                 <ItemsControl.ItemTemplate>
@@ -30,10 +30,10 @@
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Text="{Binding Label}"
-                                                       Foreground="{StaticResource SecondaryTextBrush}"
+                                                       Foreground="{DynamicResource SecondaryTextBrush}"
                                                        TextTrimming="CharacterEllipsis" />
                                             <TextBlock Grid.Column="1" Text="{Binding Value}"
-                                                       Foreground="{StaticResource PrimaryTextBrush}"
+                                                       Foreground="{DynamicResource PrimaryTextBrush}"
                                                        TextWrapping="Wrap" />
                                         </Grid>
                                     </DataTemplate>

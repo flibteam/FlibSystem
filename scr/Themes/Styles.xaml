@@ -2,62 +2,27 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!-- ============================================================
-         macOS-палитра (Aqua, светлая, полупрозрачная)
+         Кисти вынесены в Themes\Brushes.xaml / BrushesDark.xaml
     ============================================================ -->
-    <!-- Окно / подложка -->
-    <SolidColorBrush x:Key="BgBrush" Color="#EEF5F5F6" />
-    <SolidColorBrush x:Key="SidebarBrush" Color="#E8F4F4F5" />
-    <!-- Карточки / панели -->
-    <SolidColorBrush x:Key="CardBrush" Color="#F2FFFFFF" />
-    <SolidColorBrush x:Key="CardHoverBrush" Color="#FFFFFFFF" />
-    <SolidColorBrush x:Key="BorderBrush" Color="#1F000000" />
-    <SolidColorBrush x:Key="HeaderBorderBrush" Color="#26000000" />
-    <!-- Текст -->
-    <SolidColorBrush x:Key="PrimaryTextBrush" Color="#1D1D1F" />
-    <SolidColorBrush x:Key="SecondaryTextBrush" Color="#6E6E73" />
-    <!-- Акцент (System Blue) -->
-    <SolidColorBrush x:Key="AccentBrush" Color="#0A84FF" />
-    <SolidColorBrush x:Key="AccentHoverBrush" Color="#3392FF" />
-    <SolidColorBrush x:Key="AccentDarkBrush" Color="#1F0A84FF" />
-    <!-- Навигация -->
-    <SolidColorBrush x:Key="NavHoverBrush" Color="#12000000" />
-    <SolidColorBrush x:Key="NavSelectedBrush" Color="#0A84FF" />
-    <!-- Состояния -->
-    <SolidColorBrush x:Key="SelectionBrush" Color="#330A84FF" />
-    <SolidColorBrush x:Key="SuccessBrush" Color="#30D158" />
-    <SolidColorBrush x:Key="WarningBrush" Color="#FF9F0A" />
-    <SolidColorBrush x:Key="DangerBrush" Color="#FF453A" />
-    <!-- Переключатель -->
-    <SolidColorBrush x:Key="ToggleOffBrush" Color="#C7C7CC" />
-    <SolidColorBrush x:Key="ToggleKnobBrush" Color="#FFFFFF" />
-    <!-- Таблицы -->
-    <SolidColorBrush x:Key="RowHoverBrush" Color="#0F000000" />
-    <!-- Кнопки окна (traffic lights) -->
-    <SolidColorBrush x:Key="CloseBrush" Color="#FF5F57" />
-    <SolidColorBrush x:Key="MinimizeBrush" Color="#FEBC2E" />
-    <SolidColorBrush x:Key="MaximizeBrush" Color="#28C840" />
-    <SolidColorBrush x:Key="TrafficGlyphBrush" Color="#B3000000" />
-    <!-- Скроллбар -->
-    <SolidColorBrush x:Key="ScrollbarThumbBrush" Color="#66000000" />
 
     <!-- ============ Общий текст ============ -->
     <Style x:Key="SectionTitle" TargetType="{x:Type TextBlock}">
         <Setter Property="FontSize" Value="22" />
         <Setter Property="FontWeight" Value="SemiBold" />
-        <Setter Property="Foreground" Value="{StaticResource PrimaryTextBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
         <Setter Property="Margin" Value="0,0,0,4" />
     </Style>
 
     <Style x:Key="HintText" TargetType="{x:Type TextBlock}">
         <Setter Property="FontSize" Value="12.5" />
-        <Setter Property="Foreground" Value="{StaticResource SecondaryTextBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryTextBrush}" />
         <Setter Property="TextWrapping" Value="Wrap" />
     </Style>
 
     <!-- ============ Карточка ============ -->
     <Style x:Key="Card" TargetType="{x:Type Border}">
-        <Setter Property="Background" Value="{StaticResource CardBrush}" />
-        <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}" />
+        <Setter Property="Background" Value="{DynamicResource CardBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="CornerRadius" Value="10" />
         <Setter Property="Padding" Value="16" />
@@ -70,7 +35,7 @@
 
     <!-- ============ Пункт навигации (macOS sidebar) ============ -->
     <Style x:Key="NavItemStyle" TargetType="{x:Type ListBoxItem}">
-        <Setter Property="Foreground" Value="{StaticResource PrimaryTextBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Template">
@@ -81,10 +46,10 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Bd" Property="Background" Value="{StaticResource NavHoverBrush}" />
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource NavHoverBrush}" />
                         </Trigger>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="Bd" Property="Background" Value="{StaticResource NavSelectedBrush}" />
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource NavSelectedBrush}" />
                             <Setter Property="Foreground" Value="White" />
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -107,8 +72,8 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                     <Grid Width="44" Height="26">
-                        <Border x:Name="Track" Background="{StaticResource ToggleOffBrush}" CornerRadius="13" />
-                        <Ellipse x:Name="Thumb" Width="22" Height="22" Fill="{StaticResource ToggleKnobBrush}"
+                        <Border x:Name="Track" Background="{DynamicResource ToggleOffBrush}" CornerRadius="13" />
+                        <Ellipse x:Name="Thumb" Width="22" Height="22" Fill="{DynamicResource ToggleKnobBrush}"
                                  HorizontalAlignment="Left" Margin="2,0,0,0" VerticalAlignment="Center">
                             <Ellipse.Effect>
                                 <DropShadowEffect BlurRadius="5" ShadowDepth="1" Direction="270" Opacity="0.35" Color="#000000" />
@@ -117,7 +82,7 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="Track" Property="Background" Value="{StaticResource AccentBrush}" />
+                            <Setter TargetName="Track" Property="Background" Value="{DynamicResource AccentBrush}" />
                             <Setter TargetName="Thumb" Property="HorizontalAlignment" Value="Right" />
                             <Setter TargetName="Thumb" Property="Margin" Value="0,0,2,0" />
                         </Trigger>
@@ -132,7 +97,7 @@
 
     <!-- ============ Кнопки ============ -->
     <Style x:Key="AccentButtonStyle" TargetType="{x:Type Button}">
-        <Setter Property="Background" Value="{StaticResource AccentBrush}" />
+        <Setter Property="Background" Value="{DynamicResource AccentBrush}" />
         <Setter Property="Foreground" Value="White" />
         <Setter Property="FontSize" Value="13" />
         <Setter Property="FontWeight" Value="SemiBold" />
@@ -146,7 +111,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Bd" Property="Background" Value="{StaticResource AccentHoverBrush}" />
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource AccentHoverBrush}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="Bd" Property="Opacity" Value="0.8" />
@@ -161,22 +126,22 @@
     </Style>
 
     <Style x:Key="SecondaryButtonStyle" TargetType="{x:Type Button}">
-        <Setter Property="Background" Value="#8CFFFFFF" />
-        <Setter Property="Foreground" Value="{StaticResource PrimaryTextBrush}" />
+        <Setter Property="Background" Value="{DynamicResource SecondaryBtnBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
         <Setter Property="FontSize" Value="13" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{StaticResource BorderBrush}"
+                    <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{DynamicResource BorderBrush}"
                             BorderThickness="1" CornerRadius="6" Padding="16,8">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Bd" Property="Background" Value="#CCFFFFFF" />
-                            <Setter TargetName="Bd" Property="BorderBrush" Value="{StaticResource AccentBrush}" />
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource SecondaryBtnHoverBrush}" />
+                            <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource AccentBrush}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="Bd" Property="Opacity" Value="0.8" />
@@ -191,8 +156,8 @@
     </Style>
 
     <Style x:Key="DangerButtonStyle" TargetType="{x:Type Button}">
-        <Setter Property="Background" Value="#26FF453A" />
-        <Setter Property="Foreground" Value="{StaticResource DangerBrush}" />
+        <Setter Property="Background" Value="{DynamicResource DangerBtnBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource DangerBrush}" />
         <Setter Property="FontSize" Value="13" />
         <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="Cursor" Value="Hand" />
@@ -200,14 +165,14 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{StaticResource BorderBrush}"
+                    <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{DynamicResource BorderBrush}"
                             BorderThickness="1" CornerRadius="6" Padding="16,8">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Bd" Property="Background" Value="#3DFF453A" />
-                            <Setter TargetName="Bd" Property="BorderBrush" Value="{StaticResource DangerBrush}" />
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource DangerBtnHoverBrush}" />
+                            <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource DangerBrush}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="Bd" Property="Opacity" Value="0.8" />
@@ -234,7 +199,7 @@
                             BorderBrush="#22000000" BorderThickness="0.8">
                         <Grid>
                             <TextBlock x:Name="Glyph" Text="{TemplateBinding Content}" FontFamily="Segoe MDL2 Assets"
-                                       Foreground="{StaticResource TrafficGlyphBrush}" FontSize="8"
+                                       Foreground="{DynamicResource TrafficGlyphBrush}" FontSize="8"
                                        HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0" />
                         </Grid>
                     </Border>
@@ -254,7 +219,7 @@
     <!-- ============ Чекбокс (macOS) ============ -->
     <Style TargetType="{x:Type CheckBox}">
         <Setter Property="Cursor" Value="Hand" />
-        <Setter Property="Foreground" Value="{StaticResource PrimaryTextBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -264,7 +229,7 @@
                             <ColumnDefinition Width="18" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <Border x:Name="Box" Width="17" Height="17" CornerRadius="4.5" Background="White"
+                        <Border x:Name="Box" Width="17" Height="17" CornerRadius="4.5" Background="{DynamicResource CheckBoxBgBrush}"
                                 BorderBrush="#40000000" BorderThickness="1">
                             <TextBlock x:Name="CheckMark" Text="&#xE73E;" FontFamily="Segoe MDL2 Assets" FontSize="11"
                                        Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"
@@ -274,12 +239,12 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="Box" Property="Background" Value="{StaticResource AccentBrush}" />
-                            <Setter TargetName="Box" Property="BorderBrush" Value="{StaticResource AccentBrush}" />
+                            <Setter TargetName="Box" Property="Background" Value="{DynamicResource AccentBrush}" />
+                            <Setter TargetName="Box" Property="BorderBrush" Value="{DynamicResource AccentBrush}" />
                             <Setter TargetName="CheckMark" Property="Opacity" Value="1" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Box" Property="BorderBrush" Value="{StaticResource AccentBrush}" />
+                            <Setter TargetName="Box" Property="BorderBrush" Value="{DynamicResource AccentBrush}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" Value="0.5" />
@@ -293,12 +258,12 @@
     <!-- ============ Заголовки таблиц / списки ============ -->
     <Style x:Key="GridColHeaderStyle" TargetType="{x:Type GridViewColumnHeader}">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Foreground" Value="{StaticResource SecondaryTextBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryTextBrush}" />
         <Setter Property="Padding" Value="10,8" />
         <Setter Property="FontSize" Value="12" />
         <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
-        <Setter Property="BorderBrush" Value="{StaticResource HeaderBorderBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource HeaderBorderBrush}" />
         <Setter Property="BorderThickness" Value="0,0,0,1" />
         <Setter Property="Template">
             <Setter.Value>
@@ -315,9 +280,9 @@
     </Style>
 
     <Style x:Key="ListViewItemStyle" TargetType="{x:Type ListViewItem}">
-        <Setter Property="Foreground" Value="{StaticResource PrimaryTextBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
         <Setter Property="BorderThickness" Value="0,0,0,1" />
         <Setter Property="Padding" Value="0,8" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -335,10 +300,10 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{StaticResource RowHoverBrush}" />
+                            <Setter Property="Background" Value="{DynamicResource RowHoverBrush}" />
                         </Trigger>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Background" Value="{StaticResource SelectionBrush}" />
+                            <Setter Property="Background" Value="{DynamicResource SelectionBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -353,9 +318,9 @@
 
     <!-- ============ Тултип ============ -->
     <Style TargetType="{x:Type ToolTip}">
-        <Setter Property="Background" Value="#F2F5F5F7" />
-        <Setter Property="Foreground" Value="{StaticResource PrimaryTextBrush}" />
-        <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}" />
+        <Setter Property="Background" Value="{DynamicResource ToolTipBgBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="FontSize" Value="12" />
         <Setter Property="Padding" Value="10,7" />
@@ -371,7 +336,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
-                    <Border Background="{StaticResource ScrollbarThumbBrush}" CornerRadius="4" Margin="3" />
+                    <Border Background="{DynamicResource ScrollbarThumbBrush}" CornerRadius="4" Margin="3" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

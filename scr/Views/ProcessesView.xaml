@@ -12,7 +12,7 @@
             <Setter Property="Minimum" Value="0"/>
             <Setter Property="Maximum" Value="100"/>
             <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Foreground" Value="{StaticResource AccentBrush}"/>
+            <Setter Property="Foreground" Value="{DynamicResource AccentBrush}"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ProgressBar}">
@@ -29,7 +29,7 @@
         <!-- Tab button style -->
         <Style x:Key="TabBtn" TargetType="{x:Type ToggleButton}">
             <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Foreground" Value="{StaticResource SecondaryTextBrush}"/>
+            <Setter Property="Foreground" Value="{DynamicResource SecondaryTextBrush}"/>
             <Setter Property="FontSize" Value="13"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="Cursor" Value="Hand"/>
@@ -43,7 +43,7 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="Bd" Property="Background" Value="{StaticResource AccentBrush}"/>
+                                <Setter TargetName="Bd" Property="Background" Value="{DynamicResource AccentBrush}"/>
                                 <Setter Property="Foreground" Value="White"/>
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -86,11 +86,11 @@
         <Style x:Key="MetricBig" TargetType="{x:Type TextBlock}">
             <Setter Property="FontSize" Value="32"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="Foreground" Value="{StaticResource PrimaryTextBrush}"/>
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
         </Style>
         <Style x:Key="MetricLabel" TargetType="{x:Type TextBlock}">
             <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Foreground" Value="{StaticResource SecondaryTextBrush}"/>
+            <Setter Property="Foreground" Value="{DynamicResource SecondaryTextBrush}"/>
             <Setter Property="Margin" Value="0,2,0,0"/>
         </Style>
     </UserControl.Resources>
@@ -182,12 +182,12 @@
                                                 <TextBlock.Style>
                                                     <Style TargetType="{x:Type TextBlock}">
                                                         <Setter Property="Foreground"
-                                                                Value="{StaticResource PrimaryTextBrush}"/>
+                                                                Value="{DynamicResource PrimaryTextBrush}"/>
                                                         <Style.Triggers>
                                                             <DataTrigger Binding="{Binding CpuPercent}"
                                                                          Value="0">
                                                                 <Setter Property="Foreground"
-                                                                        Value="{StaticResource SecondaryTextBrush}"/>
+                                                                        Value="{DynamicResource SecondaryTextBrush}"/>
                                                             </DataTrigger>
                                                         </Style.Triggers>
                                                     </Style>
@@ -233,7 +233,7 @@
                                                                         Value="Visible"/>
                                                                 <Setter Property="Text" Value="Системный"/>
                                                                 <Setter Property="Foreground"
-                                                                        Value="{StaticResource WarningBrush}"/>
+                                                                        Value="{DynamicResource WarningBrush}"/>
                                                             </DataTrigger>
                                                         </Style.Triggers>
                                                     </Style>
@@ -248,7 +248,7 @@
 
                     <!-- Bottom bar: filters + summary -->
                     <Border Grid.Row="1" Padding="14,10"
-                            BorderBrush="{StaticResource HeaderBorderBrush}" BorderThickness="0,1,0,0"
+                            BorderBrush="{DynamicResource HeaderBorderBrush}" BorderThickness="0,1,0,0"
                             Background="#08FFFFFF">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -397,7 +397,7 @@
                                 </StackPanel>
                             </Grid>
                             <!-- CPU graph -->
-                            <Border Background="#08000000" BorderBrush="{StaticResource BorderBrush}"
+                            <Border Background="#08000000" BorderBrush="{DynamicResource BorderBrush}"
                                     BorderThickness="1" CornerRadius="8" Padding="4" Margin="0,0,0,10">
                                 <Grid Height="150">
                                     <Canvas x:Name="CpuGraphCanvas" ClipToBounds="True"/>
@@ -420,12 +420,12 @@
                                                 <RowDefinition Height="Auto"/>
                                             </Grid.RowDefinitions>
                                             <TextBlock Text="{Binding Label}" FontSize="11"
-                                                       Foreground="{StaticResource SecondaryTextBrush}"/>
+                                                       Foreground="{DynamicResource SecondaryTextBrush}"/>
                                             <Grid Grid.Row="1" Margin="0,2,0,0">
                                                 <Border Background="#15000000" CornerRadius="2"/>
                                                 <Border CornerRadius="2"
                                                         HorizontalAlignment="Left"
-                                                        Background="{StaticResource AccentBrush}"
+                                                        Background="{DynamicResource AccentBrush}"
                                                         Width="{Binding BarWidth}"/>
                                             </Grid>
                                         </Grid>
@@ -453,7 +453,7 @@
                                                Text="Всего — ГБ"/>
                                 </StackPanel>
                             </Grid>
-                            <Border Background="#08000000" BorderBrush="{StaticResource BorderBrush}"
+                            <Border Background="#08000000" BorderBrush="{DynamicResource BorderBrush}"
                                     BorderThickness="1" CornerRadius="8" Padding="4">
                                 <Grid Height="150">
                                     <Canvas x:Name="RamGraphCanvas" ClipToBounds="True"/>
@@ -481,7 +481,7 @@
                                                Text="— Мбит/с" FontSize="24"/>
                                 </StackPanel>
                             </Grid>
-                            <Border Background="#08000000" BorderBrush="{StaticResource BorderBrush}"
+                            <Border Background="#08000000" BorderBrush="{DynamicResource BorderBrush}"
                                     BorderThickness="1" CornerRadius="8" Padding="4">
                                 <Grid Height="150">
                                     <Canvas x:Name="NetGraphCanvas" ClipToBounds="True"/>
@@ -495,7 +495,7 @@
                                        Margin="0,0,0,4"/>
                             <TextBlock x:Name="DiskBigValue" Style="{StaticResource MetricBig}"
                                        Text="— %" Margin="0,0,0,10"/>
-                            <Border Background="#08000000" BorderBrush="{StaticResource BorderBrush}"
+                            <Border Background="#08000000" BorderBrush="{DynamicResource BorderBrush}"
                                     BorderThickness="1" CornerRadius="8" Padding="4">
                                 <Grid Height="150">
                                     <Canvas x:Name="DiskGraphCanvas" ClipToBounds="True"/>
@@ -519,7 +519,7 @@
                                            Text="Видеопамять: — / —" VerticalAlignment="Bottom"
                                            Margin="16,0,0,0"/>
                             </Grid>
-                            <Border Background="#08000000" BorderBrush="{StaticResource BorderBrush}"
+                            <Border Background="#08000000" BorderBrush="{DynamicResource BorderBrush}"
                                     BorderThickness="1" CornerRadius="8" Padding="4">
                                 <Grid Height="150">
                                     <Canvas x:Name="GpuGraphCanvas" ClipToBounds="True"/>
