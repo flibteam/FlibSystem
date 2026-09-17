@@ -12,11 +12,11 @@
             </Grid.ColumnDefinitions>
 
             <Border Grid.Column="0" Width="34" Height="34" CornerRadius="8"
-                    Background="{StaticResource AccentDarkBrush}"
+                    Background="{DynamicResource AccentDarkBrush}"
                     HorizontalAlignment="Left" VerticalAlignment="Center">
                 <TextBlock Text="{Binding Glyph, ElementName=root}"
                            FontFamily="Segoe MDL2 Assets" FontSize="15"
-                           Foreground="{StaticResource AccentBrush}"
+                           Foreground="{DynamicResource AccentBrush}"
                            HorizontalAlignment="Center" VerticalAlignment="Center" />
             </Border>
 
@@ -24,17 +24,17 @@
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="{Binding Title, ElementName=root}"
                                FontSize="13.5" FontWeight="SemiBold"
-                               Foreground="{StaticResource PrimaryTextBrush}" />
+                               Foreground="{DynamicResource PrimaryTextBrush}" />
                     <TextBlock Text="&#xE7BA;"
                                FontFamily="Segoe MDL2 Assets" FontSize="12"
-                               Foreground="{StaticResource WarningBrush}"
+                               Foreground="{DynamicResource WarningBrush}"
                                Margin="6,1,0,0"
                                ToolTip="Внимание: данный твик может снизить безопасность или требует перезагрузки"
                                Visibility="{Binding HasWarning, ElementName=root, Converter={StaticResource BoolToVis}}" />
                 </StackPanel>
                 <TextBlock Text="{Binding Description, ElementName=root}"
                            FontSize="12"
-                           Foreground="{StaticResource SecondaryTextBrush}"
+                           Foreground="{DynamicResource SecondaryTextBrush}"
                            TextWrapping="Wrap" Margin="0,3,0,0" />
             </StackPanel>
 
